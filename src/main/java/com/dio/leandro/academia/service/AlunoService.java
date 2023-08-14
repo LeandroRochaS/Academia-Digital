@@ -9,8 +9,9 @@ import com.dio.leandro.academia.service.impl.IAlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AlunoService implements IAlunoService {
@@ -36,9 +37,15 @@ public class AlunoService implements IAlunoService {
     }
 
     @Override
-    public List<Aluno> getAll() {
+    public List<Aluno> getAll(String dataDeNascimento) {
+        DateTimeFormatter LOCAL_DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        return repository.findAll();
+        if(dataDeNascimento == null){
+            return repository.findAll();
+        }
+        LocalDate localDate = LocalDate.parse(dataDeNascimento, LOCAL_DATE_FORMATTER);
+        return repository.findByDataDeNascimento(localDate);
+
     }
 
     @Override

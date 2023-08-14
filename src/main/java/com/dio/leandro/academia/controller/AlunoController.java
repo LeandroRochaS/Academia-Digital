@@ -20,8 +20,9 @@ public class AlunoController {
     private AlunoService alunoService;
 
     @GetMapping
-    public List<Aluno> getAll(){
-        return alunoService.getAll();
+    public List<Aluno> getAll(@RequestParam(value = "dataDeNascimento", required = false) String dataDeNascimento){
+
+        return alunoService.getAll(dataDeNascimento );
     }
 
     @PostMapping
