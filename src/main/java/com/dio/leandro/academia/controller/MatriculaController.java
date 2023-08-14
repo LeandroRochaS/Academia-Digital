@@ -6,6 +6,7 @@ import com.dio.leandro.academia.service.MatriculaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,7 +22,7 @@ public class MatriculaController {
     }
 
     @PostMapping
-    public Matricula create(@RequestBody MatriculaFormDTO form){
+    public Matricula create(@Valid @RequestBody MatriculaFormDTO form){
         return matriculaService.create(form);
     }
 }

@@ -9,6 +9,7 @@ import com.dio.leandro.academia.service.AvaliacaoFisicaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -24,7 +25,7 @@ public class AlunoController {
     }
 
     @PostMapping
-    private Aluno create(@RequestBody AlunoFormDTO form){
+    private Aluno create(@Valid @RequestBody AlunoFormDTO form){
         return alunoService.create(form);
     }
 
