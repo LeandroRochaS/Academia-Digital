@@ -17,8 +17,9 @@ public class MatriculaController {
     private MatriculaService matriculaService;
 
     @GetMapping
-    public List<Matricula> getAll(){
-        return matriculaService.getAll();
+    public List<Matricula> getAll(@RequestParam(value = "bairro", required = false) String bairro){
+
+        return matriculaService.getAll(bairro);
     }
 
     @PostMapping
